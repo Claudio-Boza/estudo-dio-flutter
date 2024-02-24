@@ -1,4 +1,4 @@
-import 'package:aula_flutter_dio/pages/login_page.dart';
+import 'package:estudo_dio_flutter/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {

@@ -30,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
                 width: double.infinity,
                 child: const Row(
                   children: [
-                    Text('Informe seu mail:'),
+                    Text('Informe seu mail: '),
                     SizedBox(
                       width: 20,
                     ),
