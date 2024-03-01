@@ -1,3 +1,4 @@
+import 'package:estudo_dio_flutter/pages/page1.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -8,6 +9,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController emailControler = TextEditingController();
+  TextEditingController passwordControler = TextEditingController();
+  bool obscure = true;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -18,52 +23,50 @@ class _LoginPageState extends State<LoginPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 100),
-              Image.network(
-                fit: BoxFit.cover,
-                'https://hermes.dio.me/companies/a169bb67-5f72-4289-9778-fcea58dfa19a.png',
-              ),
+              // Image.network(
+              //   fit: BoxFit.cover,
+              //   'https://hermes.dio.me/companies/a169bb67-5f72-4289-9778-fcea58dfa19a.png',
+              // ),
               const SizedBox(height: 30),
-              Container(
-                alignment: Alignment.center,
-                margin: const EdgeInsets.symmetric(horizontal: 30),
-                height: 30,
-                width: double.infinity,
-                child: const Row(
-                  children: [
-                    Text('Informe seu mail: '),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Text('Email:'),
-                  ],
+              TextField(
+                controller: emailControler,
+                decoration: const InputDecoration(
+                  labelText: 'Email:',
+                  icon: Icon(
+                    Icons.mail,
+                    color: Colors.green,
+                  ),
                 ),
               ),
               const SizedBox(height: 20),
-              Container(
-                alignment: Alignment.center,
-                margin: const EdgeInsets.symmetric(horizontal: 30),
-                color: Colors.green,
-                height: 30,
-                width: double.infinity,
-                child: const Text('Login:'),
+              TextField(
+                obscureText: obscure,
+                controller: passwordControler,
+                decoration: InputDecoration(
+                    labelText: 'Senha: ',
+                    icon: const Icon(
+                      Icons.password,
+                      color: Colors.green,
+                    ),
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          obscure = !obscure;
+                        });
+                      },
+                      icon: Icon(obscure ? Icons.password_outlined : Icons.add),
+                    )),
               ),
               const SizedBox(height: 280),
-              Container(
-                alignment: Alignment.center,
-                margin: const EdgeInsets.symmetric(horizontal: 30),
-                color: Colors.green,
-                height: 30,
-                width: double.infinity,
-                child: const Text('Loing:'),
-              ),
+              ElevatedButton(onPressed: () {}, child: const Text('Entrar')),
               const SizedBox(height: 20),
-              Container(
-                alignment: Alignment.center,
-                margin: const EdgeInsets.symmetric(horizontal: 30),
-                height: 30,
-                width: double.infinity,
-                child: const Text('Cadastro:'),
-              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const Page1()));
+                },
+                child: const Text('Cadastar'),
+              )
             ],
           ),
         ),
