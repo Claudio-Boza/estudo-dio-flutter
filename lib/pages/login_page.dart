@@ -1,4 +1,5 @@
 import 'package:estudo_dio_flutter/pages/page1.dart';
+import 'package:estudo_dio_flutter/pages/page_init.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -17,6 +18,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(),
         body: SizedBox(
           width: double.infinity,
           child: Column(
@@ -58,7 +60,12 @@ class _LoginPageState extends State<LoginPage> {
                     )),
               ),
               const SizedBox(height: 280),
-              ElevatedButton(onPressed: () {}, child: const Text('Entrar')),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const PageInit()));
+                  },
+                  child: const Text('Entrar')),
               const SizedBox(height: 20),
               TextButton(
                 onPressed: () {

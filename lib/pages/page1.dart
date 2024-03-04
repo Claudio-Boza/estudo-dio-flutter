@@ -18,6 +18,23 @@ class _Page1State extends State<Page1> {
   bool vagasPython = false;
   bool vagasJava = false;
   bool vagasPascal = false;
+  double salario = 0.00;
+  int? experiencia = 0;
+
+  List<DropdownMenuItem<int>> getList(int value) {
+    List<DropdownMenuItem<int>>? lista = [];
+    for (int i = 0; i < value; i++) {
+      lista.add(
+        DropdownMenuItem(
+          value: i,
+          child: i == 1
+              ? Text('${i + 1} ano de experiencia')
+              : Text('${i + 1} anos de experiencia'),
+        ),
+      );
+    }
+    return lista;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -101,6 +118,39 @@ class _Page1State extends State<Page1> {
                     vagasPascal = !vagasPascal;
                   });
                 },
+              ),
+              TitleText(
+                  title:
+                      'Salário pretendido: R\$ ${salario.toStringAsFixed(2)}'),
+              Slider(
+                min: 0.00,
+                max: 20000.00,
+                value: salario,
+                onChanged: (value) {
+                  setState(() {
+                    salario = value;
+                  });
+                },
+              ),
+              const TitleText(title: 'Tempo de experiencia'),
+              DropdownButton<int>(
+                isExpanded: true,
+                value: experiencia,
+                items: getList(10),
+                onChanged: (value) {
+                  setState(() {
+                    experiencia = value;
+                  });
+                },
+              ),
+              const Divider(),
+              Center(
+                child: ElevatedButton(
+                  child: const Text('Salvar'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
               )
             ],
           ),
