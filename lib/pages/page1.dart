@@ -143,7 +143,6 @@ class _Page1State extends State<Page1> {
                   });
                 },
               ),
-              const Divider(),
               Center(
                 child: ElevatedButton(
                   child: const Text('Salvar'),
